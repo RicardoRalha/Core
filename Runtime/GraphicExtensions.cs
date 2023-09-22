@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public static class GraphicExtensions
+namespace RicardoRalha.Core.Extensions
 {
-	public static void setAlpha (this Graphic graphic, int alpha)
+	public static class GraphicExtensions
 	{
-		Color color = graphic.color;
-		color.a = alpha;
-		graphic.color = color;
+		public static void setAlpha(this Graphic graphic, int alpha)
+		{
+			Color color = graphic.color;
+			color.a = alpha;
+			graphic.color = color;
+		}
 	}
 }

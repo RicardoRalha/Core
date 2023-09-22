@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YieldObjects
+namespace RicardoRalha.Core
 {
-	private static WaitForEndOfFrame endOfFrameObject = null;
-	private static Dictionary<float, WaitForSeconds> waitForSecondsObjectsDict = new Dictionary<float, WaitForSeconds>();
-	public static WaitForEndOfFrame GetWaitForEndOfFrame()
+	public class YieldObjects
 	{
-		if (endOfFrameObject == null) {
-			endOfFrameObject = new WaitForEndOfFrame();
+		private static WaitForEndOfFrame endOfFrameObject = null;
+
+		private static Dictionary<float, WaitForSeconds> waitForSecondsObjectsDict = new Dictionary<float, WaitForSeconds>();
+
+		public static WaitForEndOfFrame GetWaitForEndOfFrame()
+		{
+			if (endOfFrameObject == null)
+			{
+				endOfFrameObject = new WaitForEndOfFrame();
+			}
+
+			return endOfFrameObject;
 		}
 
-		return endOfFrameObject;
-	}
+		public static WaitForSeconds WaitForSeconds(float time)
+		{
+			WaitForSeconds waitForSecondsObj = null;
+			
+			if (!waitForSecondsObjectsDict.TryGetValue(time, out waitForSecondsObj))
+			{
+				waitForSecondsObj = new WaitForSeconds(time);
+				waitForSecondsObjectsDict.Add(time, waitForSecondsObj);
+			}
 
-	public static WaitForSeconds WaitForSeconds(float time)
-	{
-		WaitForSeconds waitForSecondsObj = null;
-		if (!waitForSecondsObjectsDict.TryGetValue(time, out waitForSecondsObj)) {
-			waitForSecondsObj = new WaitForSeconds(time);
-			waitForSecondsObjectsDict.Add(time, waitForSecondsObj);
+			return waitForSecondsObj;
 		}
-
-		return waitForSecondsObj;
 	}
 }

@@ -1,7 +1,7 @@
 {
-  "name": "com.ricardoralha.supportscripts",
-  "displayName": "Support Scripts",
-  "version": "1.0.0",
+  "name": "com.ricardoralha.core",
+  "displayName": "Core",
+  "version": "0.1.0",
   "unity": "2017.3",
-  "description": "Support Scripts"
+  "description": "Implementation of core utilities needed for most games"
 }
